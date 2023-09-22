@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "puppeteer": "^21.1.1"
+  },
+  "name": "boke-script",
+  "version": "1.0.0",
+  "description": "bokee",
+  "main": "index.js",
+  "scripts": {
+    "test": "run"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "module"
+}
