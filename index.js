@@ -28,20 +28,21 @@ const { USER, PASSWORD } = process.env;
     await page.waitForSelector('.overlay');
     await page.click('.popup_imagen_close');
 
-    await page.goto('https://soysocio.bocajuniors.com.ar/comprar_plano_general.php?eNid=660&esNid=68920')
+    await page.goto('https://soysocio.bocajuniors.com.ar/comprar_plano_general.php?eNid=660')
     
     let found = false;
-
     while(!found) {
         try {
-            await page.waitForSelector('.d');
+            const elem = await page.waitForSelector('section enabled');
+            if (elem.id !== 'SAD' || elem.id !== 'SAC' || elem.id !== 'SAI' || elem.id !== 'SBD' || elem.id !== 'SBC' || elem.id !== 'SBI') throw new Error();
             found = true;
         } catch {
             await page.reload();
         }
     }
 
-    await page.click('.d');
+    await page.click(elem.id);
+    // await page.click('.d');
     // const SAI = await page.waitForSelector('#SAI > .section-enabled');
 
     // https://soysocio.bocajuniors.com.ar/comprar_plano_asiento.php?eNid=659&esNid=68920
