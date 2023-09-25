@@ -8,7 +8,7 @@
   "description": "bokee",
   "main": "index.js",
   "scripts": {
-    "test": "run"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",

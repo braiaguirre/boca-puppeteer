@@ -1,5 +1,5 @@
-require('dotenv').config();
-const puppeteer = require('puppeteer');
+import 'dotenv/config';
+import puppeteer from 'puppeteer';
 const { USER, PASSWORD } = process.env;
 
 (async () => {
@@ -28,9 +28,19 @@ const { USER, PASSWORD } = process.env;
     await page.waitForSelector('.overlay');
     await page.click('.popup_imagen_close');
 
-    await page.goto('https://soysocio.bocajuniors.com.ar/comprar_plano_asiento.php?eNid=658&esNid=68920')
+    await page.goto('https://soysocio.bocajuniors.com.ar/comprar_plano_general.php?eNid=660&esNid=68920')
     
-    await page.waitForSelector('.d');
+    let found = false;
+
+    while(!found) {
+        try {
+            await page.waitForSelector('.d');
+            found = true;
+        } catch {
+            await page.reload();
+        }
+    }
+
     await page.click('.d');
     // const SAI = await page.waitForSelector('#SAI > .section-enabled');
 
